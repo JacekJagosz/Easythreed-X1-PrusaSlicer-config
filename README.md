@@ -1,4 +1,4 @@
-![PrusaSlicer logo](/resources/icons/PrusaSlicer.png?raw=true)
+![PrusaSlicer logo](https://github.com/prusa3d/PrusaSlicer/raw/master/resources/icons/PrusaSlicer.png)
 
 # My Easythreed X1 config for Prusa Slicer
 Although created for Easythreed X1, it should also work well on Easythreed X2, Labists X1, SONDORY PICO
