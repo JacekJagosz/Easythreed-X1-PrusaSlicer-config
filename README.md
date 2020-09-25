@@ -20,12 +20,14 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 ## What I changed and why
 
+![change indicators](https://user-images.githubusercontent.com/28653965/94260450-7da99400-ff30-11ea-8a84-9109ff72eb5a.png) orange padlock tells you I have changed something from PrusaSlicer's deafults, while orange back button tells you have changed something in the current profile and haven't saved it. By clicking one or the other you can see PS's defaults or what is in the profile respectively.
+
 ***TO DO***
 
 ## What you should tweak
-To see all settings mentioned below you will need to switch from **"simple"** to **"advanced"**
+![Mode switch](https://user-images.githubusercontent.com/28653965/94261311-ef361200-ff31-11ea-838e-6a9f6e857373.png) To see all settings mentioned below you will need to switch from **"Simple"** to **"Expert"**
 
-**Extruder temperature** is extremely important for your filament type and brand. Each roll has recommended temperatures written on it, in my experience X1 prints the best at lowest recommended one, even slightly below it. 
+**Extruder temperature** is extremely important for your filament type and brand. Each roll has recommended temperatures written on it, in my experience X1 prints the best at lowest recommended one, even slightly below it. *helps: stringing and other artifacts*
 
 **Extruder: Initial layer** setting is helpful when your prints have problem sticking to the bed. Increasing it compared to *other layers* is helpful, but don't do it too much or it will stick to the bed. *helps: printbed adhesion*
 
