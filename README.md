@@ -86,5 +86,5 @@ G92 E0 Z0
 This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU)
 
 ## PS
-I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you.
+I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you. Create issues if you have any ideas.
 Happy printing!
