@@ -57,34 +57,39 @@ Also remember when you hover over a checkbox it should show a tooltip explaining
 
 **Supports** are necessary when parts of the objects would have to be printed in mid-air. *helps: complicated objects, not designed for 3D printing*
 
+**Raft layers** `(2-4)` can not only help with bed adhesion but also can help with technical prints where even first few layers need to be accurate. When you add a raft all the first layer problems (like elephant foot) will only affect the raft and not the print. This wastes filament, makes bottom of the print rougher and can be hard to remove. *helps: bed adhesion and first layer consistency*
+
 **Infill density** influences print's strenght, but by not that much as you might think, as perimeters bring most rigidity. Still increase this if you want more strenght or if your top layers don't get enough support. *helps: filament used and print strenght
 
 ### Advanced tweaks
 
-**Infill pattern** effects print strenght and printing time. Different ones are slower or faster, and have different strenghts in different axis (XYZ). So choosing the best one for specific print needs more research. X1 doesn't print gyroid too well and does best when it is just straight lines. *helps: printing time and strenght*
+**Infill pattern** effects print strenght and printing time. Different ones are slower or faster, and have different strenghts in different axis (XYZ). So choosing the best one for specific print needs more research. X1 doesn't print gyroid too well and does best when it is just straight lines. I'm considering switching the default to cubic. *helps: printing time and strenght*
+
+**Elephant foot compensation** helps get rid of too large first layers. To make the print stick, you place the nozzle too close to the bed to push the filament into the bed. This has an adverse effect of filament squishing out the sides of print's first layers causing "elephant foot". If you have that problem you can increase the value from default `0.2`, but first check "Getting rid of Z belt slack" as that could actually fix the root of your problem instead of this which is more of a band-aid. *helps: too large first layers*
 
 ***TO DO***
 
 ### Start G-code tweaks
 `;` character serves as a comment, whatever is in that line after this character is a comment and will be skipped by the printer
 
-If you find *corners not sharp enough*, and want to get rid of bulging where the nozzle makes sharp turns consider adding
+**Increasing XY jerk** If you find *corners not sharp enough*, and want to get rid of bulging where the nozzle makes sharp turns consider adding
 ```
 M205 X10 Y10
 ```
 This increases max jerk from 2 to 10, meaning the printer doesn't stop on sharp corners. 
 When the head slows down to turn the extruder doesn't, and keeps spitting out filament at the same pace. This causes excessive filament on sharp turns. 
 You could make extruder "smarter" using linear advance, but that needs firmware changes. Instead whis makes head stop less, so the problem is less visible.
-*this could lead to worse prints if your frame isn't rigid enough, but causes no problems on mine*
+*this could lead to worse prints if your frame isn't rigid enough, but causes no problems on mine* *helps: corner bulging*
 
 
-If you suffer from heavy *elephant foot* and first layers that are squished too much, you can add this to start G-code after `G28`:
+
+**Getting rid of Z belt slack** - If you suffer from heavy *elephant foot* and first layers that are squished too much, you can add this to start G-code after `G28`:
 ```
 G1 Z0.2 E2 F300
 G92 E0 Z0
 ```
-This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU)
+This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU) *helps: first layer squishing*
 
 ## PS
-I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you. Create issues if you have any ideas.
+I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you. Open issues if you have any ideas.
 Happy printing!
