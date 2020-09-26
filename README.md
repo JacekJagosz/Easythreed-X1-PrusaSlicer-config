@@ -63,6 +63,10 @@ Also remember when you hover over a checkbox it should show a tooltip explaining
 
 ### Advanced tweaks
 
+**Retraction length** prevents stringing and zits by pulling filament back before travel move. This is quite dependent on your filament, so I recommend tweaking it yourself. In extreme cases Z-Hop can also help. It's a pity Prusa Slicer doesn't support coasting as it would make tweaking it a lot easier. **I actually chose a really extreme amount, so you shouldn't see any stringing but it is probably too much for your needs, so please consider turning it down.** *helps: stringing, blobs, zits*
+
+**Avoid crossing perimeters** can help a lot with visible stringing. I won't actually prevent it, but it will try moving the head inside the print instead of outside, so the stringing will be hidden inside the print. Much easier than fine-tuning retraction and very helpful when printing flexible filaments. *helps: stringing*
+
 **Infill pattern** effects print strenght and printing time. Different ones are slower or faster, and have different strenghts in different axis (XYZ). So choosing the best one for specific print needs more research. X1 doesn't print gyroid too well and does best when it is just straight lines. I'm considering switching the default to cubic. *helps: printing time and strenght*
 
 **Elephant foot compensation** helps get rid of too large first layers. To make the print stick, you place the nozzle too close to the bed to push the filament into the bed. This has an adverse effect of filament squishing out the sides of print's first layers causing "elephant foot". If you have that problem you can increase the value from default `0.2`, but first check "Getting rid of Z belt slack" as that could actually fix the root of your problem instead of this which is more of a band-aid. *helps: too large first layers*
