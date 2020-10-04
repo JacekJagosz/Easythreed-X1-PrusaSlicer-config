@@ -40,7 +40,7 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
 
-**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. Thanks yo [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/).
+**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. Thanks to [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/).
 
 **And more minor changes**
 
@@ -91,6 +91,14 @@ You could make extruder "smarter" using linear advance, but that needs firmware 
 They are executed later, after the nozzle is fully heated up and just before start of the print.
 
 **Purge line** stabilizes the filament flow at the start of the print, can be tweaked if it needs to be longer or sticks too much to the bed, or removed entirely if not needed. [Taken from u/Alyex227's profile](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/). *helps: filament buildup on the nozzle after heating up, and no extrusion on start of the print*
+```
+G1 Z0.2 X5 ; position for purge line
+G1 F500 X30 E7 ; purge line start
+G1 F350 X70 E11 ; purge line finish
+G1 E10.8 ; retract a small amount
+G1 F1500 ; set feedrate for move to print starting point
+G92 E0 ; reset extruder
+```
 
 **Getting rid of Z belt slack** - If you suffer from heavy *elephant foot* and first layers that are squished too much, you can add this before or after purge line:
 ```
