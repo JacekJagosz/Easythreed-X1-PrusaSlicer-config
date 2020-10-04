@@ -40,6 +40,8 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
 
+**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. Thanks yo [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/).
+
 **And more minor changes**
 
 ## What you should tweak
@@ -85,14 +87,18 @@ When the head slows down to turn the extruder doesn't, and keeps spitting out fi
 You could make extruder "smarter" using linear advance, but that needs firmware changes. Instead whis makes head stop less, so the problem is less visible.
 *this could lead to worse prints if your frame isn't rigid enough, but causes no problems on mine* *helps: corner bulging*
 
+### Filament start G-code tweaks
+They are executed later, after the nozzle is fully heated up and just before start of the print.
 
+**Purge line** stabilizes the filament flow at the start of the print, can be tweaked if it needs to be longer or sticks too much to the bed, or removed entirely if not needed. [Taken from u/Alyex227's profile](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/). *helps: filament buildup on the nozzle after heating up, and no extrusion on start of the print*
 
-**Getting rid of Z belt slack** - If you suffer from heavy *elephant foot* and first layers that are squished too much, you can add this to start G-code after `G28`:
+**Getting rid of Z belt slack** - If you suffer from heavy *elephant foot* and first layers that are squished too much, you can add this before or after purge line:
 ```
-G1 Z0.2 E2 F300
-G92 E0 Z0
+G1 Z0
+G1 Z0.2
+G92 Z0
 ```
-This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU) *helps: first layer squishing*
+This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. Start with Z0.2, but increase it untill you get good results, [u/calex2 needed Z1.0 to get good results.](https://www.reddit.com/r/EasyThreeD/comments/izu3lz/prusaslicer_profile_for_x1_extensive_explanation/g7ihmh0/) [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU) *helps: many first layers squishing*
 
 ## PS
 I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you. Open issues if you have any ideas.
