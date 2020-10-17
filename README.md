@@ -40,7 +40,7 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
 
-**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. Thanks to [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/).
+**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. Thanks to [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/). *I actually got rid of it because it interferes if you have clips at the ends of the bed, and is sometimes hard to remove. If you want to have it, go to Filament Settings -> Custom G-code -> Start G-code and remove the ";"s*
 
 **And more minor changes**
 
