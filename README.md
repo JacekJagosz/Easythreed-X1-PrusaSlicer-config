@@ -10,9 +10,9 @@ You can either download newest file by right clicking [here](https://raw.githubu
 Then go to PrusaSlicer, select File -> Import -> Import Config and find the `EasythreedX1.ini` file you just downloaded.
 
 ## My setup
-I have an early Easythreed X1 without part cooling fan, and instead I use a PC 120MM fan standing next to the printer and connected to fan header in the electronics box.
+I have an early Easythreed X1 without part cooling fan, and instead I used a PC 120MM fan standing next to the printer or 4010 centrifugal fun with simple duck, both connected to fan header in the electronics box. They unfortunately provide better cooling from one side (visible in extreme situations), and need improvement.
 
-I print in higher quality PET-G, which requies less cooling than PLA, but needs better tuning to avoid stringing.
+I print in higher quality PET-G, which requies less cooling than PLA, but needs better tuning to avoid stringing. I also bought PLA just to test this profile with most people print with, and it works really well, but PET-G is better suited for this printer.
 
 My printer seems to suffer from less backlash than some others, so it seems frame of my frame is more rigid and I can get away with higher acceleration jerk settings.
 
@@ -21,6 +21,8 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 ## What I changed and why
 
 ![change indicators](https://user-images.githubusercontent.com/28653965/94260450-7da99400-ff30-11ea-8a84-9109ff72eb5a.png) orange padlock tells you I have changed something from PrusaSlicer's deafults, while orange back button tells you have changed something in the current profile and haven't saved it. By clicking one or the other you can see PS's defaults or what is in the profile respectively.
+
+**Z belt slack compensation** `none -> 0.4mm` - Gets rid of first layers getting squished caused by slack in the belt raising the head, which causes it to not move up while printing first few layers. Your printer will have less or more of it, so especially *if your prints not stick* lower it, or raise if you still see squishing. *Filament Settings -> Custom G-code -> Start G-code*
 
 **Layer height** `0.3mm -> 0.2mm`- I lowered it to get more detail, as speed benefit from taller layer isn't that noticeable with such a small printer.
 
@@ -39,8 +41,6 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 **Increase Y max Jerk** `0.4 -> 2 (M205 Y2)`- By deafult X1 has Y jerk set extremely low. Bringing it up to the same value as X jerk makes printing quality of curves better and speeds up the printing.
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
-
-**Purge line** stabilizes filament flow at the start of the print and get's rid to some filament sticking to the nozzle after heating up. I instead use more skirt loops which work as well but without it's drawbacks, so I disabled purge line by default. *If you want to have it, go to Filament Settings -> Custom G-code -> Start G-code and remove the ";"s.* Thanks to [u/Alyex227](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/).
 
 **And more minor changes**
 
@@ -77,6 +77,7 @@ Also remember when you hover over a checkbox it should show a tooltip explaining
 
 ### Start G-code tweaks
 `;` character serves as a comment, whatever is in that line after this character is a comment and will be skipped by the printer
+Printer Settings -> Custom G-code -> Start G-code
 
 **Increasing XY jerk** If you find *corners not sharp enough*, and want to get rid of bulging where the nozzle makes sharp turns consider adding
 ```
@@ -88,9 +89,10 @@ You could make extruder "smarter" using linear advance, but that needs firmware 
 *this could lead to worse prints if your frame isn't rigid enough, but causes no problems on mine* *helps: corner bulging*
 
 ### Filament start G-code tweaks
+Filament Settings -> Custom G-code -> Start G-code
 They are executed later, after the nozzle is fully heated up and just before start of the print.
 
-**Purge line** stabilizes the filament flow at the start of the print, can be tweaked if it needs to be longer or sticks too much to the bed, or removed entirely if not needed. [Taken from u/Alyex227's profile](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/). *helps: filament buildup on the nozzle after heating up, and no extrusion on start of the print*
+**Purge line** stabilizes the filament flow at the start of the print, but it will interfere if you use clips to hold the bed. I found added skirt lines make it not necessary. If you want it remove ";"s. [Taken from u/Alyex227's profile](https://www.reddit.com/r/EasyThreeD/comments/i7r90j/backlash_fix_easythreed_x1_mini_marlin_20_files/). *helps: filament buildup on the nozzle after heating up, and no extrusion on start of the print*
 ```
 G1 Z0.2 X5 ; position for purge line
 G1 F500 X30 E7 ; purge line start
