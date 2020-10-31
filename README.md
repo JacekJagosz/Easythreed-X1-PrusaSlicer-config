@@ -12,7 +12,7 @@ Then go to PrusaSlicer, select File -> Import -> Import Config and find the `Eas
 ## My setup
 I have an early Easythreed X1 without part cooling fan, and instead I used a PC 120MM fan standing next to the printer or 4010 centrifugal fun with simple duck, both connected to fan header in the electronics box. They unfortunately provide better cooling from one side (visible in extreme situations), and need improvement.
 
-I print in higher quality PET-G, which requies less cooling than PLA, but needs better tuning to avoid stringing. I also bought PLA just to test this profile with most people print with, and it works really well, but PET-G is better suited for this printer.
+I print in higher quality PET-G, which requires less cooling than PLA, but needs better tuning to avoid stringing. I also bought PLA just to test this profile with most people print with, and it works really well, but PET-G is better suited for this printer.
 
 My printer seems to suffer from less backlash than some others, so it seems frame of my frame is more rigid and I can get away with higher acceleration jerk settings.
 
@@ -20,13 +20,13 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 ## What I changed and why
 
-![change indicators](https://user-images.githubusercontent.com/28653965/94260450-7da99400-ff30-11ea-8a84-9109ff72eb5a.png) orange padlock tells you I have changed something from PrusaSlicer's deafults, while orange back button tells you have changed something in the current profile and haven't saved it. By clicking one or the other you can see PS's defaults or what is in the profile respectively.
+![change indicators](https://user-images.githubusercontent.com/28653965/94260450-7da99400-ff30-11ea-8a84-9109ff72eb5a.png) orange padlock tells you I have changed something from PrusaSlicer's defaults, while orange back button tells you have changed something in the current profile and haven't saved it. By clicking one or the other you can see PS's defaults or what is in the profile respectively.
 
 **Z belt slack compensation** `none -> 0.4mm` - Gets rid of first layers getting squished caused by slack in the belt raising the head, which causes it to not move up while printing first few layers. Your printer will have less or more of it, so especially **if your prints not stick** lower it, or raise if you still see squishing. *Filament Settings -> Custom G-code -> Start G-code*
 
 **Layer height** `0.3mm -> 0.2mm`- I lowered it to get more detail, as speed benefit from taller layer isn't that noticeable with such a small printer.
 
-**Skirt** `1 -> 4, 6mm -> 2mm`- increased number of loops so the filament will start etruding corretly before it goes to the print, and increased distance from object so it doesn't cause big prints to not fit on the bed.
+**Skirt** `1 -> 4, 6mm -> 2mm`- increased number of loops so the filament will start extruding correctly before it goes to the print, and increased distance from object so it doesn't cause big prints to not fit on the bed.
 
 **Support - XY separation between between an object and its support** `50% -> 150%`- I had massive problems removing supports from the print, and this should make it easier to detach.
 
@@ -38,7 +38,7 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 **Retract on layer change** `no -> yes`- Should reduce filament buildup where layer change happens, so seam should be less visible.
 
-**Increase Y max Jerk** `0.4 -> 2 (M205 Y2)`- By deafult X1 has Y jerk set extremely low. Bringing it up to the same value as X jerk makes printing quality of curves better and speeds up the printing.
+**Increase Y max Jerk** `0.4 -> 2 (M205 Y2)`- By default X1 has Y jerk set extremely low. Bringing it up to the same value as X jerk makes printing quality of curves better and speeds up the printing.
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
 
@@ -47,7 +47,7 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 ## What you should tweak
 ![Mode switch](https://user-images.githubusercontent.com/28653965/94261311-ef361200-ff31-11ea-838e-6a9f6e857373.png) To see all settings mentioned below you will need to switch from **"Simple"** to **"Expert"**
 
-Also remember when you hover over a checkbox it should show a tooltip explaining what that option does.
+Also remember when you hover over a checkbox it should show a tool-tip explaining what that option does.
 
 **Extruder temperature** is extremely important for your filament type and brand. Each roll has recommended temperatures written on it, in my experience X1 prints the best at lowest recommended one, even slightly below it. *helps: stringing and other artifacts*
 
@@ -61,7 +61,7 @@ Also remember when you hover over a checkbox it should show a tooltip explaining
 
 **Raft layers** `(2-4)` can not only help with bed adhesion but also can help with technical prints where even first few layers need to be accurate. When you add a raft all the first layer problems (like elephant foot) will only affect the raft and not the print. This wastes filament, makes bottom of the print rougher and can be hard to remove. *helps: bed adhesion and first layer consistency*
 
-**Infill density** influences print's strenght, but by not that much as you might think, as perimeters bring most rigidity. Still increase this if you want more strenght or if your top layers don't get enough support. *helps: filament used and print strenght
+**Infill density** influences print's strength, but by not that much as you might think, as perimeters bring most rigidity. Still increase this if you want more strength or if your top layers don't get enough support. *helps: filament used and print strength
 
 ### Advanced tweaks
 
@@ -69,7 +69,7 @@ Also remember when you hover over a checkbox it should show a tooltip explaining
 
 **Avoid crossing perimeters** can help a lot with visible stringing. I won't actually prevent it, but it will try moving the head inside the print instead of outside, so the stringing will be hidden inside the print. Much easier than fine-tuning retraction and very helpful when printing flexible filaments. *helps: stringing*
 
-**Infill pattern** effects print strenght and printing time. Different ones are slower or faster, and have different strenghts in different axis (XYZ). So choosing the best one for specific print needs more research. X1 doesn't print gyroid too well and does best when it is just straight lines. I'm considering switching the default to cubic. *helps: printing time and strenght*
+**Infill pattern** effects print strength and printing time. Different ones are slower or faster, and have different strengths in different axis (XYZ). So choosing the best one for specific print needs more research. X1 doesn't print gyroid too well and does best when it is just straight lines. I'm considering switching the default to cubic. *helps: printing time and strength*
 
 **Elephant foot compensation** helps get rid of too large first layers. To make the print stick, you place the nozzle too close to the bed to push the filament into the bed. This has an adverse effect of filament squishing out the sides of print's first layers causing "elephant foot". If you have that problem you can increase the value from default `0.2`, but first check "Getting rid of Z belt slack" as that could actually fix the root of your problem instead of this which is more of a band-aid. *helps: too large first layers*
 
@@ -85,7 +85,7 @@ M205 X10 Y10
 ```
 This increases max jerk from 2 to 10, meaning the printer doesn't stop on sharp corners. 
 When the head slows down to turn the extruder doesn't, and keeps spitting out filament at the same pace. This causes excessive filament on sharp turns. 
-You could make extruder "smarter" using linear advance, but that needs firmware changes. Instead whis makes head stop less, so the problem is less visible.
+You could make extruder "smarter" using linear advance, but that needs firmware changes. Instead this makes head stop less, so the problem is less visible.
 *this could lead to worse prints if your frame isn't rigid enough, but causes no problems on mine* *helps: corner bulging*
 
 ### Filament start G-code tweaks
@@ -108,7 +108,7 @@ G1 Z0
 G1 Z0.2
 G92 Z0
 ```
-This is helpfull if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. Start with Z0.2, but increase it untill you get good results, [u/calex2 needed Z1.0 to get good results.](https://www.reddit.com/r/EasyThreeD/comments/izu3lz/prusaslicer_profile_for_x1_extensive_explanation/g7ihmh0/) [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU) *helps: many first layers squishing*
+This is helpful if your printer has loose Z axis belt and on first few layers the head wouldn't really move up because those moves would only take out slack from the belt. This command should stretch it and take slack out before the print. Start with Z0.2, but increase it until you get good results, [u/calex2 needed Z1.0 to get good results.](https://www.reddit.com/r/EasyThreeD/comments/izu3lz/prusaslicer_profile_for_x1_extensive_explanation/g7ihmh0/) [Tip taken from Nerys' video](https://www.youtube.com/watch?v=IyCipO-2HYU) *helps: many first layers squishing*
 
 ## PS
 I'm open for suggestions, please comment what you think, what I could improve and how well did it work for you. Open issues if you have any ideas.
