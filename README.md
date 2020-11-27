@@ -42,6 +42,8 @@ I also oiled the rails and I printed spool holder for Prusa Mini to prevent any 
 
 **Raise the nozzle before the printing** `Z5 -> Z40 (G1 Z40 F5000)`- By default it stayed very close to the bed making oozing filament stick to the nozzle and risking damaging the bed.
 
+**Retraction** `2mm -> 6mm`- Decreases stringing, which occur with PLA but are especially visible when printing PET-G.
+
 **And more minor changes**
 
 ## What you should tweak
@@ -65,7 +67,7 @@ Also remember when you hover over a checkbox it should show a tool-tip explainin
 
 ### Advanced tweaks
 
-**Retraction length** prevents stringing and zits by pulling filament back before travel move. This is quite dependent on your filament, so I recommend tweaking it yourself. In extreme cases Z-Hop can also help. It's a pity Prusa Slicer doesn't support coasting as it would make tweaking it a lot easier. **I actually chose a really extreme amount, so you shouldn't see any stringing but it is probably too much for your needs, so please consider turning it down.** *helps: stringing, blobs, zits*
+**Retraction length** prevents stringing and zits by pulling filament back before travel move. This is quite dependent on your filament, so I recommend tweaking it yourself. In extreme cases Z-Hop can also help. It's a pity Prusa Slicer doesn't support coasting as it would make tweaking it a lot easier. If you see excessive stringing (like when printing PET-G) turn it up, but **if you have extruder jams turn it down**. *helps: stringing, blobs, zits*
 
 **Avoid crossing perimeters** can help a lot with visible stringing. I won't actually prevent it, but it will try moving the head inside the print instead of outside, so the stringing will be hidden inside the print. Much easier than fine-tuning retraction and very helpful when printing flexible filaments. *helps: stringing*
 
