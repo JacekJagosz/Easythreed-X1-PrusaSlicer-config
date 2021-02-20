@@ -8,6 +8,7 @@ Although created for Easythreed X1, it should also work well on Easythreed X2, L
 ## Installation
 You can either download newest file by right clicking [here](https://raw.githubusercontent.com/JacekJagosz/Easythreed-X1-PrusaSlicer-config/master/EasythreedX1.ini) and choosing "save link as" or by going to [releases](https://github.com/JacekJagosz/Easythreed-X1-PrusaSlicer-config/releases) and downloading .ini from there.
 Then go to PrusaSlicer, select File -> Import -> Import Config and find the `EasythreedX1.ini` file you just downloaded.
+Then to make it persist, go to print, filament and printer settings, click save, input a name and save it.
 
 ## My setup
 I have an early Easythreed X1 without part cooling fan, and instead I used a PC 120MM fan standing next to the printer or 4010 centrifugal fun with simple duck, both connected to fan header in the electronics box. They unfortunately provide better cooling from one side (visible in extreme situations), and need improvement.
